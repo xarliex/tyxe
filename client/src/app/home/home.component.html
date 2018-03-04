@@ -1,9 +1,10 @@
+
 <p>
   home works!
 </p>
 
 <div *ngIf="session.getUser()">
-    <button [routerLink]="['user', session.getUser()._id]" class="btn btn-primary"> My Profile </button>
+    <button [routerLink]="['user', user._id]" class="btn btn-primary"> My Profile </button>
     <button [routerLink]="['companies/list']" class="btn btn-primary"> Companies </button>
     <button (click)="logout()" class="btn btn-primary"> Logout </button>
 </div>
