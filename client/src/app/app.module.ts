@@ -15,6 +15,7 @@ import { ListcompaniesComponent } from './listcompanies/listcompanies.component'
 import { CompanyComponent } from './company/company.component';
 import { HomeComponent } from './home/home.component';
 import { NewcompanyComponent } from './newcompany/newcompany.component';
+import { EdituserComponent } from './edituser/edituser.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { NewcompanyComponent } from './newcompany/newcompany.component';
     ListcompaniesComponent,
     CompanyComponent,
     HomeComponent,
-    NewcompanyComponent
+    NewcompanyComponent,
+    EdituserComponent
   ],
   imports: [
     BrowserModule,

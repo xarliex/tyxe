@@ -89,15 +89,21 @@ router.put("/edit/:id", (req, res, next)=>{
 });
 
 // DELETE 
-router.get("/delete/:id", (req, res) => {
-    const id = req.params.id;
+// router.get("/delete/:id", (req, res) => {
+//     const id = req.params.id;
   
-    Company.findByIdAndRemove(id, (err, company) => {
-      if (err) {
-        return next(err);
-      }
-      return res.redirect("/index");
-    });
+//     Company.findByIdAndRemove(id, (err, company) => {
+//       if (err) {
+//         return next(err);
+//       }
+//       return res.redirect("/companies/list");
+//     });
+//   });
+
+  router.get('/delete/:id', function (req, res, next) {
+    Company.findByIdAndRemove(req.params.id)
+      .then(() => res.status(200).json({ message: 'removed' }))
+      .catch(e => res.status(500).json(e))
   });
 
 module.exports = router;

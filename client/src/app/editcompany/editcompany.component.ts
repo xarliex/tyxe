@@ -47,12 +47,12 @@ export class EditcompanyComponent implements OnInit {
     .subscribe(status => { if(status === 200) this.router.navigate([`/companies/${this.company._id}`]) } )
   }
 
-  deleteCompany(id) {
-    this.companyService.remove(id)
-      .subscribe((company) => {
-        this.company = company;
-        console.log(this.company)
-      });
+deleteCompany(){
+  this.companyService.remove(this.company._id)
+  .subscribe( m => {
+    this.router.navigate(['/companies/list']);
+  });
+ }
+ 
 }
 
-}

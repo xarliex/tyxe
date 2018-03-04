@@ -16,7 +16,7 @@ const generateCRUD = (Model) => {
   });
 
 /* U => UPDATE */
-router.put('/:id', function (req, res, next) {
+router.put('/edit/:id', function (req, res, next) {
     // Get only the properties we need
     const model_properties = _.remove(
       Object.keys(Model.schema.paths),

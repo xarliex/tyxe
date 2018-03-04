@@ -1,12 +1,13 @@
-
 <div *ngIf="company">
   <div class="row">
     <div class="col-3 backbtn" style="text-align:center">
-            <a [routerLink]="['/companies', company._id]"><button class="btn btn-primary"> back </button></a>
+      <a [routerLink]="['/companies', company._id]">
+        <button class="btn btn-primary"> back </button>
+      </a>
     </div>
-    <div class="col-6" >
+    <div class="col-6">
       <div class="editcompanyhead" style="text-align:center">
-          <h1>Edit Company</h1>
+        <h1>Edit Company</h1>
       </div>
       <form (ngSubmit)="submitForm(company._id, editCompany)" #editCompany="ngForm">
         <div class="cophoto" style="text-align:center">
@@ -38,7 +39,7 @@
         <input type="text" #editCompanytickerprice="ngModel" [(ngModel)]="company.tickerPrice" name="tickerPrice">
         <br>
         <div class="savebutton" style="text-align:center">
-            <button class="btn btn-primary" type="submit">Save</button>
+          <button class="btn btn-primary" type="submit">Save</button>
         </div>
       </form>
       <br>
@@ -46,9 +47,12 @@
     <div class="col-3"></div>
   </div>
 </div>
-  <div>
-    <p *ngIf="error" class="error"> {{ error }} </p>
-  </div>
+<div class="deletebutton" style="text-align:center">
+  <button class="btn btn-primary" (click)="deleteCompany()">Delete Ticker</button>
+</div>
+<div>
+  <p *ngIf="error" class="error"> {{ error }} </p>
+</div>
 
 
 

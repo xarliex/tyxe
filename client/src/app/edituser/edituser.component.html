@@ -1,0 +1,34 @@
+<p>
+  edituser works!
+</p>
+
+<div *ngIf="user">
+    <div class="row">
+      <div class="col-3 backbtn" style="text-align:center">
+        <a [routerLink]="['/user', user._id]">
+          <button class="btn btn-primary"> back </button>
+        </a>
+      </div>
+      <div class="col-6">
+        
+        <form (ngSubmit)="submitForm(user._id, edituser)" #edituser="ngForm">
+          <!-- <div class="cophoto" style="text-align:center">
+            <img [src]="user.profilePic" width="100" />
+          </div> -->
+          <!-- <br>
+          <label> Company Logo </label>
+          <input type="text" #edituserprofilepic="ngModel" [(ngModel)]="user.profilePic" name="profilePic" minlength="3" pattern="https?://.+">
+          <br> -->
+          <label> Ticker Name </label>
+          <input type="text" #edituserusername="ngModel" [(ngModel)]="user.username" name="username">
+
+          <button class="btn btn-primary" type="submit">Save</button>
+
+        </form>
+      </div>
+      <div class="col-3"></div>
+    </div>
+  </div>
+
+
+{{user | json}}

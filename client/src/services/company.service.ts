@@ -40,7 +40,6 @@ export class CompanyService {
       .catch(this.handleError);
   }
 
-    
   remove(id) {
     return this.http.get(`${this.BASE_URL}/api/companies/delete/${id}`)
       .map((res) => res.json());
