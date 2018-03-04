@@ -13,30 +13,33 @@ let loginPromise = (req, user) => {
 
 /* SIGNUP */
 router.post('/signup', (req, res, next) => {
-  const {username,password} = req.body;
-  if (!username || !password) return res.status(400).json({ message: 'Provide username and password' })
+  const {name,surname,email,username,password} = req.body;
+  if (!name || !surname || !email ||!username || !password) return res.status(400).json({ message: 'Please fill in all details' })
   User.findOne({ username }, '_id')
     .then(foundUser =>{
       if (foundUser) return res.status(400).json({ message: 'The username already exists' });
       const salt = bcrypt.genSaltSync(10);
       const hashPass = bcrypt.hashSync(password, salt);
       const theUser = new User({
+        name, 
+        surname,
+        email,
         username,
         password: hashPass
       });
-      return theUser.save()
+      theUser.save()
           .then(user => loginPromise(req,user))
           .then(user => {
             debug(`Registered user ${user._id}. Welcome ${user.username}`);
             res.status(200).json(req.user)
           }) 
+          .catch(e => res.status(500).json(e))
     })
     .catch(e => {
       console.log(e);
       res.status(500).json(e)
     }) 
 });
-
 
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', (err, theUser, failureDetails) => {
@@ -53,9 +56,15 @@ router.get('/logout', (req, res, next) => {
   res.status(200).json({ message: 'Success' });
 });
 
+router.get('/user', (req, res, next) => {
+  req.myprofile();
+  res.status(200).json({ message: 'Welcome to your profile' });
+});
+
 router.get('/loggedin', (req, res, next) => {
   if (req.isAuthenticated()) return res.status(200).json(req.user);
   res.status(403).json({ message: 'Unauthorized' });
 });
+
 
 module.exports = router;

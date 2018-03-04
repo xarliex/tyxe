@@ -1,8 +1,21 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+
+<div *ngIf="!session.getUser()">
+<ul class="topnav">
+    <li><a class="" [routerLink]="['/']">Home</a></li>
+    <li><a class="" [routerLink]="['/login']">Login</a></li>
+  </ul>
 </div>
 
-<app-login-form></app-login-form>
+<div *ngIf="session.getUser()">
+    <ul class="topnav">
+        <li><a class="" [routerLink]="['/']">Home</a></li>
+        <li><a class="" [routerLink]="['/companies/list']">Companies</a></li>
+        <li><a class="" [routerLink]="['user', session.getUser()._id]">Profile</a></li>
+        <li><a class="" [routerLink]="['**']" (click)="logout()" >Logout</a></li> 
+      </ul>
+</div>
+<div style="text-align:center"></div>
+
+<router-outlet></router-outlet>
+

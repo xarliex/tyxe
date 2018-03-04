@@ -1,0 +1,25 @@
+<p>
+  user works!
+</p>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-5">
+        <a [routerLink]="['/']"><button class="btn btn-primary"> Home </button> </a>
+      </div>
+      <div class="col-5"></div>
+</div>
+
+
+<div class= "row">
+    <div class="col-4"></div>
+    <div class="col-4">
+      <h4>{{user.name}} {{user.surname}}</h4>
+      <h4>Username: {{user.username}}</h4>
+      <h4>Email: {{user.email}}</h4>
+      <h4>Cash: {{user.cash}}</h4>
+      <h4>Funds: {{user.funds}}</h4>
+      <h4>Your investments: {{user.holdings}}</h4>
+      <h4>Your orders: {{user.orders}}</h4>
+    </div>
+    <div class="col-4"></div>
+</div>

@@ -1,0 +1,36 @@
+
+<div *ngIf="company">
+<div class="row">
+    <div class="col-3 backbtn" style="text-align:center">
+        <a [routerLink]="['/companies/list']"><button class="btn btn-primary"> Back </button></a>
+</div>
+  <div class="col-6">
+    <div class="cophoto" style="text-align:center">
+      <img [src]="company.tickerImg" width="100" />
+    </div>
+    <br>
+    <h4>Company: {{company.tickerName}}</h4>
+    <h4>Description: {{company.tickerDescription}}</h4>
+    <h4>Ticker Price: {{company.tickerPrice}} EUR</h4>
+    <h4>Market Capitalization: {{company.mktCap}} EUR</h4>
+    <h4>Total Shares: {{company.totalShares}}</h4>
+    <h4>Available Shares: {{company.avbShares}}</h4>
+    <h4>Shares weight: {{company.percentage}}</h4>
+    <h4>Past Prices: "Past Prices Go Here" {{company.pastPrices}}</h4>
+    <h4>Past Orders: "Past Orders Go Here" {{company.pastOrders}}</h4>
+    <h4>Pending Orders: "Pending Orders Go Here"{{company.pendingOrders}}</h4>
+    <br>
+  </div>
+  <div class="col-3"></div>
+</div>
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6" style="text-align:center">
+      <a [routerLink]="['/companies/edit',company._id]">
+        <button class="btn btn-primary"> Edit </button>
+      </a>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  </div>

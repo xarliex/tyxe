@@ -1,0 +1,123 @@
+
+<div *ngIf="company">
+  <div class="row">
+    <div class="col-3 backbtn" style="text-align:center">
+            <a [routerLink]="['/companies', company._id]"><button class="btn btn-primary"> back </button></a>
+    </div>
+    <div class="col-6" >
+      <div class="editcompanyhead" style="text-align:center">
+          <h1>Edit Company</h1>
+      </div>
+      <form (ngSubmit)="submitForm(company._id, editCompany)" #editCompany="ngForm">
+        <div class="cophoto" style="text-align:center">
+          <img [src]="company.tickerImg" width="100" />
+        </div>
+        <br>
+        <label> Company Logo </label>
+        <input type="text" #editCompanytickerImg="ngModel" [(ngModel)]="company.tickerImg" name="tickerImg" minlength="3" pattern="https?://.+">
+        <br>
+        <label> Ticker Name </label>
+        <input type="text" #editCompanytickername="ngModel" [(ngModel)]="company.tickerName" name="tickerName">
+        <br>
+        <label> Ticker Description </label>
+        <input type="text" #editCompanytickerDescription="ngModel" [(ngModel)]="company.tickerDescription" name="tickerDescription">
+        <br>
+        <label> Market Capitalization </label>
+        <input type="text" #editCompanymktcap="ngModel" [(ngModel)]="company.mktCap" name="mktCap">
+        <br>
+        <label> Total Shares </label>
+        <input type="text" #editCompanytotalshares="ngModel" [(ngModel)]="company.totalShares" name="totalShares">
+        <br>
+        <label> Percentage </label>
+        <input type="text" #editCompanypercentage="ngModel" [(ngModel)]="company.percentage" name="percentage">
+        <br>
+        <label> Available Shares </label>
+        <input type="text" #editCompanyavbshares="ngModel" [(ngModel)]="company.avbShares" name="avbShares">
+        <br>
+        <label> Ticker Price </label>
+        <input type="text" #editCompanytickerprice="ngModel" [(ngModel)]="company.tickerPrice" name="tickerPrice">
+        <br>
+        <div class="savebutton" style="text-align:center">
+            <button class="btn btn-primary" type="submit">Save</button>
+        </div>
+      </form>
+      <br>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>
+  <div>
+    <p *ngIf="error" class="error"> {{ error }} </p>
+  </div>
+
+
+
+<!-- <div class="container">
+    <div class="row">
+      <h1> Edit a Company </h1>
+
+    </div>
+<div class="editcompanycont">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      
+     
+        <form (ngSubmit)="update(company)" #company="ngForm">
+          <br>
+          <h2> Company: </h2>
+          <label> Ticker Name </label>
+          <input type="text" #companytickername="ngModel" [(ngModel)]="company.tickerName" name="tickerName" value="company.tickerName"/>
+          <br>
+          <label> Ticker Description </label>
+          <input type="text" #companytickerdescription="ngModel" [(ngModel)]="company.tickerDescription" name="tickerDescription"/>
+          <br>
+          <label> Starting Market Capitalization </label>
+          <input type="number" #companymktCap="ngModel" [(ngModel)]="company.mktCap" name="mktCap" />
+          <br>
+          <label> Total Shares </label>
+          <input type="number" #companytotalShares="ngModel" [(ngModel)]="company.totalShares" name="totalShares" />
+          <br>
+          <label> Percentage Offering </label>
+          <input type="number" #companypercentage="ngModel" [(ngModel)]="company.percentage" name="percentage"/>
+          <br>
+          <br>
+          <label> Shares Offering </label>
+          <input type="number" #companyavbShares="ngModel" [(ngModel)]="company.avbShares" name="avbShares"/>
+          <br>
+          <br>
+          <label> Starting Price </label>
+          <input type="number" #companytickerPrice="ngModel" [(ngModel)]="company.tickerPrice" name="tickerPrice"/>
+          <br>
+
+          <div class="col-3">
+            <section>
+                <img src="../{{company.tickerImg}}" alt="photo goes here">
+                <br>
+                <br>
+                <label for="tickerImg">Company Logo</label>
+                <br>
+                <br>
+                <input type="file" name="image">
+                <hr>
+            </section>
+            <div>
+                <button class="btn btn-warning" type= "submit"> Save </button>
+            </div>
+            <br>
+            <div>
+                <a [routerLink]="['/companies',company._id]"> <button class="btn btn-primary"> back </button> </a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-6"></div>
+  </div>
+  <div>
+      <p *ngIf="error" class="error"> {{ error }} </p>
+    </div>
+</div> -->
+
+
+{{company | json}}

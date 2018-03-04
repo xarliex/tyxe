@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -8,14 +9,16 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const {dbURL} = require('./config');
+const generateCRUD = require('./routes/usercrud');
 const cors = require('cors');
 const auth = require('./routes/auth');
 
 const app = express();
 
+
 mongoose.connect(dbURL)
-        .then(()=> console.log("Connected to DB"))
-        .catch(e => console.error(e));
+  .then(()=> console.log("Connected to TYXE DB"))
+  .catch(e => console.error(e));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -35,12 +38,14 @@ var corsOptions = {
   credentials: true
 };
 app.use(cors(corsOptions));
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+const User = require('./models/User')
+const cocrud = require("./routes/cocrud")
 
 app.use(session({
   secret: 'angular auth passport secret shh',
@@ -52,7 +57,10 @@ app.use(session({
 
 require('./passport')(app)
 
+console.log(User.modelName);
 app.use('/api/auth', auth);
+app.use('/api/user', generateCRUD(User));
+app.use('/api/companies', cocrud);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

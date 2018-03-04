@@ -1,0 +1,33 @@
+<p>
+  listcompanies works!
+</p>
+
+<div class= "row">
+  <div class="col-3"></div>
+  <div class="col-1">
+  <a [routerLink]="['/']"> <button class="btn btn-primary"> Home </button> </a>
+  </div>
+  <div class="col-8">
+      <a [routerLink]="['/companies/newcompany']"> <button class="btn btn-primary"> New Company </button> </a>
+      </div>
+</div>
+
+<div class="el" *ngFor="let company of companies">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+      <br>
+      <hr>
+      <br>
+      <a [routerLink]="['/companies',company._id]">
+        <img [src]="company.tickerImg" width="100" />
+      </a>
+      <br>
+      <br>
+      <p> Ticker: {{ company.tickerName }} - Share Price: {{ company.tickerPrice }} EUR</p>
+      <p> Description: {{ company.tickerDescription }} </p>
+      <a [routerLink]="['/companies',company._id]"> <button class="btn btn-primary"> View Details </button> </a>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<p>
+  home works!
+</p>
+
+<div *ngIf="session.getUser()">
+    <button [routerLink]="['user', session.getUser()._id]" class="btn btn-primary"> My Profile </button>
+    <button [routerLink]="['companies/list']" class="btn btn-primary"> Companies </button>
+    <button (click)="logout()" class="btn btn-primary"> Logout </button>
+</div>
+
+<div *ngIf="!session.getUser()">
+    <button [routerLink]="['/login']"> Login </button>
+</div>
+
+<div>
+    <p *ngIf="error" class="error"> {{ error }} </p>
+</div>
