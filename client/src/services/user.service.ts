@@ -16,7 +16,7 @@ export class UserService {
   }
 
   get(id) {
-    return this.http.get(`${this.BASE_URL}/api/user/${id}`, this.options)
+    return this.http.get(`${this.BASE_URL}/api/user/${id}`)
       .map((res) => res.json());
   }
   
@@ -24,7 +24,6 @@ export class UserService {
   //   return this.http.put(`${this.BASE_URL}/api/user/${user._id}`, user)
   //     .map((res) => res.json());
   // }
-
   edit(id,form):Observable<any>{
     return this.http.put(`${this.BASE_URL}/api/user/edit/${id}`, form, this.options)
       .map(res => res.status)
@@ -37,4 +36,3 @@ export class UserService {
       .map((res) => res.json());
   }
 }
-

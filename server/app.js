@@ -57,13 +57,6 @@ app.use(session({
 
 require('./passport')(app)
 
-app.use((req, res, next) => {
-  res.locals.user = req.user
-  console.log('mira mis locals')
-  console.log(res.locals)
-  next()
-})
-
 console.log(User.modelName);
 app.use('/api/auth', auth);
 app.use('/api/user', generateCRUD(User));

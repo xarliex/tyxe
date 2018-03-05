@@ -1,4 +1,4 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -6,37 +6,35 @@ import { Observable } from 'rxjs/Rx';
 
 interface User {
   username:string,
-  password:string
+  password:string,
+  _id:string,
 }
 
 @Injectable()
 export class SessionService {
-
+  
   BASEURL:string = "http://localhost:3000"
   options:object = {withCredentials:true};
-  user:User;
-  //loginEvent:EventEmitter<object> = new EventEmitter();
-
+  
+  
   constructor(private http: Http) {
     this.isLoggedIn().subscribe();
   }
 
-  handleError(e) {
-    console.log(e);
-    return Observable.throw(e.json().message);
-  }
+  public user:User; 
 
-  handleUser(user) {
-    this.user = user;
-    //this.loginEvent.emit(this.user);
-    return this.user
-  }
+  // constructor(private http:Http) {
+  //   this.isLoggedIn().subscribe( (user:User) =>{
+  //     console.log(`Welcome again user ${user.username}`)
+  //     this.user = user;
+  //   });
+  // }
 
   getUser(){
     return this.user;
   }
   
-  private configureUser(set=false){
+  public configureUser(set=false){
     return (user) => {
       if(set){
         this.user = user;
@@ -52,21 +50,25 @@ export class SessionService {
   back(userId):Observable<any>{
     return this.http.get(`${this.BASEURL}/api/user/${userId}`, this.options)
     .map(res => res.json())
+    .map(this.configureUser(true))
     .catch(this.handleError);
   }
 
-  signup( email:string, username:string, password:string):Observable<any>{
-    return this.http.post(`${this.BASEURL}/api/auth/signup`, { email, username, password}, this.options)
-      .map(res => res.status)
-      .map(user => this.handleUser(user))
+  handleError(e) {
+    console.log(e);
+    return Observable.throw(e.json().message);
+  }
+
+  signup(name:string, surname:string, email:string, username:string, password:string):Observable<any>{
+    return this.http.post(`${this.BASEURL}/api/auth/signup`, {name, surname, email, username, password}, this.options)
+      .map(res => res.json())
       .map(this.configureUser(true))
       .catch(this.handleError);
   }
 
   login(username:string, password:string):Observable<any>{
     return this.http.post(`${this.BASEURL}/api/auth/login`, {username,password},this.options)
-      .map(res => res.status)
-      .map(user => this.handleUser(user))
+      .map(res => res.json())
       .map(this.configureUser(true))
       .catch(this.handleError);
   }
@@ -74,7 +76,6 @@ export class SessionService {
   logout():Observable<any>{
     return this.http.get(`${this.BASEURL}/api/auth/logout`,this.options)
       .map(res => res.json())
-      .map(user => this.handleUser(null))
       .map(this.configureUser(false))
       .catch(this.handleError);
   }
@@ -83,7 +84,6 @@ export class SessionService {
   isLoggedIn():Observable<any> {
     return this.http.get(`${this.BASEURL}/api/auth/loggedin`,this.options)
       .map(res => res.json())
-      .map(user => this.handleUser(null))
       .map(this.configureUser(true))
       .catch(this.handleError);
   }

@@ -25,13 +25,13 @@ export class LoginFormComponent implements OnInit {
   login(){
     this.session.login(this.username,this.password)
     .catch(e => this.error = e)
-    .subscribe( status => { if(status === 200) this.router.navigate(['/']) } )
+    .subscribe( user => { if(user) this.router.navigate(['/']) } )
   }
 
   signup(){
-    this.session.signup(this.email, this.newusername,this.newpassword)
+    this.session.signup(this.name, this.surname, this.email, this.newusername,this.newpassword)
     .catch(e => this.error = e)
-    .subscribe( status => { if(status === 200) this.router.navigate(['/']) } )
+    .subscribe( user => { if(user) this.router.navigate(['/']) } )
   }
   
 }

@@ -10,13 +10,8 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
 
   error:string;
-  user:any 
-  
-  constructor(public router: Router, public session:SessionService) { 
-    // this.session.loginEvent.subscribe( user => {
-    //   this.user = user; 
-    // })
-  }
+
+  constructor(public router: Router, public session:SessionService) { }
 
   ngOnInit() {
   }

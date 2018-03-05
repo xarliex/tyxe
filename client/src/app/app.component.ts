@@ -10,15 +10,19 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'app';
   error:string;
-  
-  constructor(public router: Router, public session:SessionService) { }
+  user: any;
+  constructor(public router: Router, public session:SessionService) { 
+    this.session.getUser();
+  }
+
+  ngOnInit() {
+    this.session.isLoggedIn().subscribe( user => {
+      this.user = user;
+    });
+  }
 
   logout(){
     this.session.logout()
-    .catch(e => this.error = e)
-    .subscribe();
+    .subscribe(user => this.user = null)
   }
 }
-
-
-

@@ -41,7 +41,7 @@ export class CompanyService {
   }
 
   remove(id) {
-    return this.http.get(`${this.BASE_URL}/api/companies/delete/${id}`, this.options)
+    return this.http.get(`${this.BASE_URL}/api/companies/delete/${id}`)
       .map((res) => res.json());
   }
 }
