@@ -14,7 +14,7 @@ let loginPromise = (req, user) => {
 /* SIGNUP */
 router.post('/signup', (req, res, next) => {
   const {name,surname,email,username,password} = req.body;
-  if (!name || !surname || !email ||!username || !password) return res.status(400).json({ message: 'Please fill in all details' })
+  if ( !email ||!username || !password) return res.status(400).json({ message: 'Please fill in all details' })
   User.findOne({ username }, '_id')
     .then(foundUser =>{
       if (foundUser) return res.status(400).json({ message: 'The username already exists' });
@@ -31,6 +31,7 @@ router.post('/signup', (req, res, next) => {
           .then(user => loginPromise(req,user))
           .then(user => {
             debug(`Registered user ${user._id}. Welcome ${user.username}`);
+            req.user = user
             res.status(200).json(req.user)
           }) 
           .catch(e => res.status(500).json(e))
@@ -46,7 +47,9 @@ router.post('/login', (req, res, next) => {
     if (err) return res.status(500).json({ message: 'Something went wrong' });
     if (!theUser) return res.status(401).json(failureDetails);
     loginPromise(req,theUser)
-      .then(() => res.status(200).json(req.user))
+      .then(() => {
+        req.user = theUser
+        res.status(200).json(req.user)})
       .catch(e => res.status(500).json({ message: 'Something went wrong' }));
   })(req, res, next);
 });

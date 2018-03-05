@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'app';
   error:string;
+  
   constructor(public router: Router, public session:SessionService) { }
 
   logout(){
@@ -18,5 +19,6 @@ export class AppComponent {
     .subscribe();
   }
 }
+
 
 

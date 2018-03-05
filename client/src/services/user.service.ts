@@ -16,7 +16,7 @@ export class UserService {
   }
 
   get(id) {
-    return this.http.get(`${this.BASE_URL}/api/user/${id}`)
+    return this.http.get(`${this.BASE_URL}/api/user/${id}`, this.options)
       .map((res) => res.json());
   }
   

@@ -9,8 +9,11 @@ const generateCRUD = (Model) => {
   /* R => RETRIEVE */
   // Retrieve one
   router.get('/:id', function (req, res, next) {
-    debug(`Retrieving id: ${req.params.id}`)
-    Model.findById(req.params.id)
+    console.log('mi user guardado')
+    console.log(res.locals.user)
+    const userId = res.locals.user._id
+    debug(`Retrieving id: ${userId}`)
+    Model.findById(userId)
       .then(list => res.status(200).json(list))
       .catch(e => res.status(500).json(e))
   });
