@@ -1,0 +1,27 @@
+
+<div *ngIf="order">
+
+  <div class="row">
+    <div class="col-3 backbtn" style="text-align:center">
+      <a [routerLink]="['/orders/company', order.orderco]"><button class="btn btn-primary"> Back </button></a>
+    </div>
+    <div class="col-6">
+      <br>
+      <h5>Orderer: {{order.orderer}}</h5>
+      <h5>Company: {{order.orderco}} </h5>
+      <h5>Quantity in shares: {{order.orderQty}} </h5>
+      <h5>Value: {{order.orderValue}} EUR</h5>
+      <h5>Completed: {{order.statusflag}}</h5>
+      <h5>Type Buy: {{order.typeflag}}</h5>
+      <br>
+    </div>
+    <div class="col-3"></div>
+  </div>
+  
+  <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6" style="text-align:center"></div>
+      <br>
+      <div class="col-3" style="text-align:center"></div>
+    </div>
+</div>

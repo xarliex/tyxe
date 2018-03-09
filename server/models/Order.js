@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 
 const orderSchema = new Schema({
-    orderer: user_id,
-    orderTck: company_id,
-    orderPrice: company_tickerPrice,
+    orderer: {type: Schema.Types.ObjectId, ref: 'User'},
+    orderco: {type: Schema.Types.ObjectId, ref: 'Company'},
     orderQty: Number,
     orderValue: Number, 
-    flag: Boolean,
+    statusflag: Boolean,
+    typeflag: Boolean,
 }, {
   timestamps: {
     createdAt: 'created_at',

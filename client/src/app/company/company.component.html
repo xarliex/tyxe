@@ -1,36 +1,100 @@
-
 <div *ngIf="company">
-<div class="row">
-    <div class="col-3 backbtn" style="text-align:center">
-        <a [routerLink]="['/companies/list']"><button class="btn btn-primary"> Back </button></a>
-</div>
-  <div class="col-6">
-    <div class="cophoto" style="text-align:center">
-      <img [src]="company.tickerImg" width="100" />
-    </div>
-    <br>
-    <h4>Company: {{company.tickerName}}</h4>
-    <h4>Description: {{company.tickerDescription}}</h4>
-    <h4>Ticker Price: {{company.tickerPrice}} EUR</h4>
-    <h4>Market Capitalization: {{company.mktCap}} EUR</h4>
-    <h4>Total Shares: {{company.totalShares}}</h4>
-    <h4>Available Shares: {{company.avbShares}}</h4>
-    <h4>Shares weight: {{company.percentage}}</h4>
-    <h4>Past Prices: "Past Prices Go Here" {{company.pastPrices}}</h4>
-    <h4>Past Orders: "Past Orders Go Here" {{company.pastOrders}}</h4>
-    <h4>Pending Orders: "Pending Orders Go Here"{{company.pendingOrders}}</h4>
-    <br>
-  </div>
-  <div class="col-3"></div>
-</div>
-
-<div class="row">
-    <div class="col-3"></div>
-    <div class="col-6" style="text-align:center">
-      <a [routerLink]="['/companies/edit',company._id]">
-        <button class="btn btn-primary"> Edit </button>
+  <div class="row">
+    <div class="col-3 tpbtn">
+      <a [routerLink]="['/orders/company',company._id]">
+        <button class="btn btn-outline-primary"> Orders </button>
       </a>
     </div>
+    <div class="col-6 tpbtn" style="text-align:center">
+    </div>
+
+    <div class="col-3 tpbtn" style="text-align:center">
+      <a [routerLink]="['/companies/edit',company._id]">
+        <button class="btn btn-outline-primary"> Edit Company </button>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="row lexxxay">
+    <div class="col-3 backbtn" style="text-align:center">
+    </div>
+    <div class="col-6 ">
+      <div class="cophoto" style="text-align:center">
+        <img [src]="company.tickerImg" width="200" />
+      </div>
+      <br>
+      <div class='headerUser showinfo'>
+        <h4>{{company.tickerName}}</h4>
+      </div>
+      <div class='headerUser showinfo'>
+        <h5>{{company.tickerDescription}}</h5>
+      </div>
+      <div class='headerUser showinfo meh'>
+        <h3>{{company.tickerPrice}} €</h3>
+      </div>
+      <div class="headChart">
+        <app-line-chart-demo [pastPrices]="pastPrices"></app-line-chart-demo>
+      </div>
+    </div>
     <div class="col-3"></div>
   </div>
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-3">
+      <div class='headerUser showinfo meh'>
+        <p>Market Capitalization: </p>
+        <h2>{{company.mktCap}} €</h2>
+      </div>
+      <div class='headerUser showinfo meh'>
+        <p>Stock Weight: </p>
+        <h2>{{company.percentage}} </h2>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class='headerUser showinfo meh'>
+        <p>Total Shares: </p>
+        <h2>{{company.totalShares}} </h2>
+      </div>
+      <div class='headerUser showinfo meh'>
+        <p>Available Shares: </p>
+        <h2>{{company.avbShares}} </h2>
+      </div>
+    </div>
+    <div class="col-3"></div>
   </div>
+
+
+  <div class="trading">
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4 nav-item" style="align-items:center">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a class="btn btn-success ord" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="false">BUY</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-danger ord" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile"
+              aria-selected="false">SELL</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-4"></div>
+    </div>
+    <div class="row">
+      <div class="col-5"></div>
+      <div class="col-4">
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <app-neworder></app-neworder>
+          </div>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+            <app-newsell></app-newsell>
+          </div>
+        </div>
+      </div>
+      <div class="col-3"></div>
+
+    </div>
+  </div>
+</div>

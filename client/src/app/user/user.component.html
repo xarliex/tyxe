@@ -1,31 +1,29 @@
-<div *ngIf="this.user">
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-1">
-            <a [routerLink]="['/']">
-                <button class="btn btn-primary"> Home </button>
-            </a>
-        </div>
-        <div class="col-8" style="text-align: center">
-            <a [routerLink]="['/user/edit/', user._id]">
-                <button class="btn btn-primary"> edit </button>
-            </a>
-        </div>
-        <div class="col-2"></div>
-    </div>
 
+<div *ngIf="this.user" class="container-fluid showuser">
+    <div class='headerUser'>
+            <img src="https://media.licdn.com/mpr/mpr/AAEAAQAAAAAAAAfxAAAAJDc2MDU4ZDIyLWNjYWMtNDYyYy04MmI2LWE2NDA2OTBmMjRhYw.jpg">
 
-    <div class="row">
-        <div class="col-4"></div>
-        <div class="col-4">
+    </div> 
+    <div class='headerUser'>
             <h4>{{user.name}} {{user.surname}}</h4>
-            <h4>Username: {{user.username}}</h4>
-            <h4>Email: {{user.email}}</h4>
-            <h4>Cash: {{user.cash}}</h4>
-            <h4>Funds: {{user.funds}}</h4>
-            <h4>Your investments: {{user.holdings}}</h4>
-            <h4>Your orders: {{user.orders}}</h4>
         </div>
-        <div class="col-4"></div>
+    <div class='headerUser'>
+        <p>Username:</p>
+        <h4>@{{user.username}}</h4>
     </div>
+    <div class='headerUser'>
+        <p>Email:</p>
+        <h4>{{user.email}}</h4>
+    </div>
+    <div class='headerUser'>
+        <p>Cash:</p>
+        <h4>{{user.cash}}€</h4>
+    </div>
+    <div class='headerUser'>
+        <p>Investments:</p>
+        <h4>{{user.orders}} None</h4>
+    </div>
+    <a [routerLink]="['/user/edit/', user._id]">
+        <button class="btn btn-primary editbtn"> Edit </button>
+    </a>
 </div>

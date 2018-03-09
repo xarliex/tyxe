@@ -10,7 +10,10 @@ const companySchema = new Schema({
   percentage: Number, 
   avbShares: Number, 
   tickerPrice: Number, 
-  pastPrices: [], 
+  pastPrices: [{
+    price: Number,
+    date: Date
+  }],
   pastOrders: [],
   pendingOrders: [],
 }, {

@@ -1,0 +1,93 @@
+.tpbtn{
+padding-top: 11px;
+text-align: center;
+margin-left: -5px;
+}
+
+.headerUser{
+    display:flex;
+    margin-bottom: 5px;
+}
+
+h3{
+    color: white; 
+    margin-left: 10px;
+    font-size: 50px;
+}
+
+h4{
+    color: white; 
+    margin-left: 10px;
+    font-size: 26px;
+}
+
+p{
+    color: grey;
+    font-size: 20px;
+}
+
+h5{
+    color: grey;
+    font-size: 18px;
+}
+
+.showinfo{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.meh{
+    margin-bottom: 5%;
+}
+
+.headerChart{
+    display:flex;
+
+}
+
+.lexxxay{
+    margin-top: -2%;
+    margin-bottom: 3%;
+}
+
+
+h2{
+    color: white; 
+    margin-left: 10px;
+    font-size: 40px;
+}
+
+.ord{
+    width: 100px;
+}
+
+.btn-success{
+    background-color:#21CE99
+}
+
+.btn-success:hover{
+    background-color:#41e17e
+    
+}
+
+.nav-item{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+
+}
+
+.finalbtn{
+    padding-top: 10px;
+    padding-left: 40px;
+}
+
+.btttn{
+    padding-top: 10px;
+    padding-left: 40px;
+}

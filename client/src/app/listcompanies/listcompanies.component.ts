@@ -10,6 +10,7 @@ import { SessionService } from '../../services/session.service'
 export class ListcompaniesComponent implements OnInit {
   companies:Array<Object>;
   user:any;
+  error:string
 
   constructor(    
     private companyService: CompanyService,
@@ -17,7 +18,6 @@ export class ListcompaniesComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.user = this.sessionService.back().subscribe( e => {console.log(e)})
     this.getCompanies()
   }
 
@@ -27,5 +27,6 @@ export class ListcompaniesComponent implements OnInit {
       this.companies = list
       console.log(this.companies)
     });
-   
-}}
+  }
+
+}

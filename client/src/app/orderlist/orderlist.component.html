@@ -1,0 +1,27 @@
+
+<div class= "row">
+    <div class="col-1"></div>
+    <div class="col-1">
+
+    </div>
+    <div class="col-2">
+      <br>
+      <h1>ALL ORDERS</h1>
+      <br>
+    </div>
+  </div>
+  
+  <div class="el showUser" *ngFor="let order of orders">
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6">
+          <div class='headerUser'>
+              <p> User: {{ order.orderer }} - Company: {{ order.orderco }}</p>
+              <a [routerLink]="['/order',order._id]"> <button class="btn btn-primary"> View Details </button> </a>
+          </div>
+        <br>
+      </div>
+      <div class="col-3"></div>
+    </div>
+  </div>
+

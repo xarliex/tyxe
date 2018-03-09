@@ -16,6 +16,14 @@ import { CompanyComponent } from './company/company.component';
 import { HomeComponent } from './home/home.component';
 import { NewcompanyComponent } from './newcompany/newcompany.component';
 import { EdituserComponent } from './edituser/edituser.component';
+import { OrderService } from '../services/order.service';
+import { OrderComponent } from './order/order.component';
+import { OrderlistComponent } from './orderlist/orderlist.component';
+import { NeworderComponent } from './neworder/neworder.component';
+import { NewsellComponent } from './newsell/newsell.component';
+import { ChartsModule } from 'ng2-charts';
+import { LineChartDemoComponent } from './line-chart-demo/line-chart-demo.component';
+
 
 
 @NgModule({
@@ -28,15 +36,21 @@ import { EdituserComponent } from './edituser/edituser.component';
     CompanyComponent,
     HomeComponent,
     NewcompanyComponent,
-    EdituserComponent
+    EdituserComponent,
+    OrderComponent,
+    OrderlistComponent,
+    NeworderComponent,
+    NewsellComponent,
+    LineChartDemoComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpModule,
-    FormsModule
+    FormsModule,
+    ChartsModule
   ],
-  providers: [SessionService, UserService, CompanyService],
+  providers: [SessionService, UserService, CompanyService, OrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

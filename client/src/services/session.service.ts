@@ -16,7 +16,6 @@ export class SessionService {
   BASEURL:string = "http://localhost:3000"
   options:object = {withCredentials:true};
   
-  
   constructor(private http: Http) {
     this.isLoggedIn().subscribe();
   }
@@ -59,8 +58,8 @@ export class SessionService {
     return Observable.throw(e.json().message);
   }
 
-  signup(name:string, surname:string, email:string, username:string, password:string):Observable<any>{
-    return this.http.post(`${this.BASEURL}/api/auth/signup`, {name, surname, email, username, password}, this.options)
+  signup(username:string, email:string,  password:string):Observable<any>{
+    return this.http.post(`${this.BASEURL}/api/auth/signup`, {username, email, password}, this.options)
       .map(res => res.json())
       .map(this.configureUser(true))
       .catch(this.handleError);
@@ -85,6 +84,11 @@ export class SessionService {
     return this.http.get(`${this.BASEURL}/api/auth/loggedin`,this.options)
       .map(res => res.json())
       .map(this.configureUser(true))
+      .catch(this.handleError);
+  }
+  currentUserLogged():Observable<any> {
+    return this.http.get(`${this.BASEURL}/api/auth/loggedin`,this.options)
+      .map(res => res.json())
       .catch(this.handleError);
   }
 }

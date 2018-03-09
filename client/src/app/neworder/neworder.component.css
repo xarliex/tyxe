@@ -1,0 +1,37 @@
+label{
+    color: white; 
+}
+
+h3{
+    color: white; 
+}
+
+h4{
+    color: white; 
+}
+
+.btn-success{
+    background-color:#21CE99;
+}
+
+.btn-success:hover{
+    background-color:#41e17e
+    
+}
+
+.headerUser{
+    display:flex;
+    margin-bottom: 5px;
+}
+
+label{
+    margin-left: 30%;
+    color: grey;
+    font-size: 18px;
+}
+
+input{
+    border-radius: 20px;
+    text-align: center;
+    border-color: #21CE99;
+}

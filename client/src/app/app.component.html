@@ -1,23 +1,114 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="xxx">
 
-<div *ngIf="!session.getUser()">
-        <ul class="topnav">
-            <li><a class="" [routerLink]="['/']">Home</a></li>
-            <li><a class="" [routerLink]="['/login']">Login</a></li>
-          </ul>
+    <div *ngIf="!session.getUser()">
+        <div class="topnav">
+            <div class="left">
+                <a [routerLink]="['/']">
+                    <img style="width:100px; margin-top:-1%;" src="https://i.imgur.com/wWDRhDX.png"
+                        alt="myAdvisor">
+                </a>
+            </div>
+            <div class="center"></div>
+            <div class="right">
+                <a [routerLink]="['/login']">Login</a>
+            </div>
         </div>
-        
-        <div *ngIf="session.getUser()">
-            <ul class="topnav">
-                <li><a class="" [routerLink]="['/']">Home</a></li>
-                <li><a class="" [routerLink]="['/companies/list']">Companies</a></li>
-                <li><a class="" [routerLink]="['user', session.getUser()._id]">Profile</a></li>
-                <li><a class="" [routerLink]="['**']" (click)="logout()" >Logout</a></li> 
-              </ul>
+        <div class="barra">
+                <hr>
+            </div>
+
+    </div>
+
+    <div *ngIf="session.getUser()">
+        <div class="topnav">
+            <div class="left">
+                    <a [routerLink]="['/']">
+                        <img style="width:90px; margin-top:-1%;" src="https://i.imgur.com/wWDRhDX.png"
+                            alt="myAdvisor">
+                    </a>
+            </div>
+            <div class="center">
+                <a [routerLink]="['/companies/list']"><button class="btn btn-outline-danger dngr"> Trade </button></a>
+            </div>
+            <div class="right" >
+                <a [routerLink]="['user', session.getUser()._id]">Profile</a>
+                <a [routerLink]="['**']" (click)="logout()">Logout</a>
+            </div>
         </div>
-        <div style="text-align:center"></div>
-        
-        <router-outlet></router-outlet>
+        <div class="barra">
+            <hr>
+        </div>
+
+    </div>
+
+    <router-outlet></router-outlet>
+
+    <footer class="page-footer teal">
+        <div class="row">
+            <div class="col s4">
+                <div class="footer-logo">
+                    <img style="width:150px; margin-top:7px;" src="https://i.imgur.com/wWDRhDX.png" alt="tyxe-logo">
+                </div>
+            </div>
+            <div class="col s3">
+                <span class="footer-caption">Product</span>
+                <ul>
+                    <li>
+                        <a class="dev-profile" href="https://www.linkedin.com/in/giorgiograssini/">About</a>
+                    </li>
+                    <li>
+                        <a class="dev-profile" href="https://www.linkedin.com/in/carlos-lorente/">Work with us</a>
+                    </li>
+                    <li>
+                        <a class="dev-profile" href="https://www.linkedin.com/in/carlos-lorente/">Terms of Use</a>
+                    </li>
+                    <li>
+                        <a class="dev-profile" href="https://www.linkedin.com/in/carlos-lorente/">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col s3">
+                <span class="footer-caption">Support</span>
+                <ul>
+                    <li>
+                        <a class="dev-profile" href="https://www.linkedin.com/in/carlos-lorente/">Help center</a>
+                    </li>
+                    <li>
+                        <a class="dev-profile" href="https://www.linkedin.com/in/carlos-lorente/">Security</a>
+                    </li>
+                    <li>
+                        <a class="dev-profile" href="https://www.linkedin.com/in/carlos-lorente/">Privacy</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col s2">
+                <span class="footer-caption"></span>
+            </div>
+            <a class="social" href="https://www.linkedin.com/in/carlos-lorente/">
+                <img style="width:30px; margin-top:7px;" src="https://cdn1.iconfinder.com/data/icons/social-media-and-logos-8/32/github_social_media_online_logo-256.png"
+                    alt="Twitter">
+            </a>
+            <a class="social" href="https://www.linkedin.com/in/carlos-lorente/">
+                <img style="width:30px; margin-top:7px;" src="https://cdn1.iconfinder.com/data/icons/social-media-and-logos-8/32/facebook_social_media_online_logo-256.png"
+                    alt="Twitter">
+            </a>
+            <a class="social" href="https://www.linkedin.com/in/carlos-lorente/">
+                <img style="width:30px; margin-top:7px;" src="https://cdn1.iconfinder.com/data/icons/social-media-and-logos-8/32/twitter_social_media_online_logo-256.png"
+                    alt="Instagram">
+            </a>
+            <a class="social" href="https://www.linkedin.com/in/carlos-lorente/">
+                <img style="width:30px; margin-top:7px;" src="https://cdn1.iconfinder.com/data/icons/social-media-and-logos-8/32/instagram_social_media_online_logo-256.png"
+                    alt="Twitter">
+            </a>
+            <div class="footer-copyright">
+                <div class="container">
+                    <div class="lower-bar">
+                        <a class="copyright">© 2018 TYXE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </div>

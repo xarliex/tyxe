@@ -7,6 +7,9 @@ import { ListcompaniesComponent } from './listcompanies/listcompanies.component'
 import { CompanyComponent } from './company/company.component';
 import { EditcompanyComponent } from './editcompany/editcompany.component';
 import { NewcompanyComponent } from './newcompany/newcompany.component';
+import { OrderComponent } from './order/order.component';
+import { OrderlistComponent } from './orderlist/orderlist.component';
+import { NeworderComponent } from './neworder/neworder.component';
 
 
 export const routes: Routes = [
@@ -18,6 +21,9 @@ export const routes: Routes = [
     { path: 'companies/newcompany', component: NewcompanyComponent},
     { path: 'companies/:id', component: CompanyComponent},
     { path: 'companies/edit/:id', component: EditcompanyComponent},
+    { path: 'order/:id', component: OrderComponent},
+    { path: 'trade/:id', component: NeworderComponent},
+    { path: 'orders/company/:id', component: OrderlistComponent},
     { path: '**', redirectTo: '' }
 ];
 

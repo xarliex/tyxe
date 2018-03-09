@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyService } from '../../services/company.service';
+import { ChartsModule } from 'ng2-charts';
+
 
 @Component({
   selector: 'app-company',
@@ -8,13 +10,14 @@ import { CompanyService } from '../../services/company.service';
   styleUrls: ['./company.component.css']
 })
 export class CompanyComponent implements OnInit {
-  
   company:any;
+  pastPrices:any;
+
 
   constructor(
     private router:Router,
     private route: ActivatedRoute,
-    private companyService:CompanyService
+    private companyService:CompanyService,
   ) { }
 
   ngOnInit() {
@@ -27,7 +30,7 @@ export class CompanyComponent implements OnInit {
     this.companyService.get(id)
       .subscribe((company) => {
         this.company = company;
-        console.log(this.company)
+        this.pastPrices = company.pastPrices;
       });
   }
 

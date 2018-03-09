@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div *ngIf="company">
+      <div class="col-1"></div>
+      <div class="col-8 newordercont">
+        <form (ngSubmit)="submitBuy(neworder)" #neworder="ngForm">
+          <input style="margin-left: 20px;" type="hidden" [(ngModel)]="company._id" name="orderco"
+            minlength="1" />
+          <input style="margin-left: 20px;" type="hidden" [(ngModel)]="user._id" name="orderer"
+            minlength="1" />
+         <label> Nº Shares </label>
+          <input style="margin-left: 20px;" type="number" [(ngModel)]="shareQuantity" name="orderQty"
+            minlength="1" (keyup)="updatePrice($event)" />
+          <br>
+          <br>
+         <label> Order Value </label>
+          <input style="margin-left: 20px;" type="number" [(ngModel)]="newOrder.orderValue" name="orderValue"
+            minlength="1" />
+          <br> 
+          <br>
+          <div class="finalbtn" style="padding-top:10px; padding-left:40px">
+              <button class="btn btn-success btttn " type="submit" > SUBMIT BUY </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-3"></div>
+      <div>
+        <p *ngIf="error" class="error"> {{ error }} </p>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -13,16 +13,14 @@ let loginPromise = (req, user) => {
 
 /* SIGNUP */
 router.post('/signup', (req, res, next) => {
-  const {name,surname,email,username,password} = req.body;
-  if (!name || !surname || !email ||!username || !password) return res.status(400).json({ message: 'Please fill in all details' })
+  const {username,email,password} = req.body;
+  // if ( !email ||!username || !password) return res.status(400).json({ message: 'Please fill in all details' })
   User.findOne({ username }, '_id')
     .then(foundUser =>{
       if (foundUser) return res.status(400).json({ message: 'The username already exists' });
       const salt = bcrypt.genSaltSync(10);
       const hashPass = bcrypt.hashSync(password, salt);
       const theUser = new User({
-        name, 
-        surname,
         email,
         username,
         password: hashPass

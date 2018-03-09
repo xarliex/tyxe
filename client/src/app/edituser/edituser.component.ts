@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { SessionService } from '../../services/session.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -21,7 +22,8 @@ export class EdituserComponent implements OnInit {
   constructor( 
     public router: Router,
     private route: ActivatedRoute,
-    private userService: UserService) { }
+    private userService: UserService,
+    private sessionService: SessionService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -43,7 +45,12 @@ export class EdituserComponent implements OnInit {
      console.log(this.user._id)
     this.userService.edit(this.user._id, form.value)
     .catch(e => this.error = e)
-    .subscribe(status => { if(status === 200) this.router.navigate([`/user/${this.user._id}`]) } )
-  }
-
+    .subscribe(status => { 
+      if(status === 200){
+        this.sessionService.isLoggedIn().subscribe(() => {
+          this.router.navigate([`/user/${this.user._id}`])
+        })
+      }
+    }
+  )}
 }

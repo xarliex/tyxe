@@ -64,12 +64,6 @@ router.post('/newcompany',upload.single('image'),(req,res,next)=>{
 /* U => UPDATE */
 
 router.put("/edit/:id", (req, res, next)=>{
-    Company.findById(req.params.id, (err, company) => {
-        // if (req.file === undefined) {
-        //     a = company.tickerImg;
-        // } else {
-        //     a = req.;
-        // } 
 
         let updates = {
             tickerName:req.body.tickerName,
@@ -81,11 +75,16 @@ router.put("/edit/:id", (req, res, next)=>{
             tickerPrice: req.body.tickerPrice,
             tickerImg : req.body.tickerImg
         } 
-
-    Company.findByIdAndUpdate(req.params.id, updates, {new: true})
-        .then(newCompany => res.status(200).json({ message: 'Company updated successfully' }))
-        .catch(e => res.status(500).json(e));
-    });
+        
+    Company.update(   
+      { _id: req.params.id },
+      { $push: { pastPrices: {price: updates.tickerPrice, date: new Date()}} }
+    )
+    .then(company => {
+      Company.findByIdAndUpdate(req.params.id, updates, {new: true})
+      .then(newCompany => res.status(200).json({ message: 'Company updated successfully' }))
+      })
+      .catch(e => res.status(500).json(e));
 });
 
 // DELETE 

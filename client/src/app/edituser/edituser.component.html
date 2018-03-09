@@ -1,34 +1,47 @@
-<p>
-  edituser works!
-</p>
+
+<div class="maq">
+
 
 <div *ngIf="user">
     <div class="row">
-      <div class="col-3 backbtn" style="text-align:center">
-        <a [routerLink]="['/user', user._id]">
-          <button class="btn btn-primary"> back </button>
-        </a>
+      <div class="col-3 " >
+
       </div>
-      <div class="col-6">
+      <div class="col-6"style="text-align:center">
         
         <form (ngSubmit)="submitForm(user._id, edituser)" #edituser="ngForm">
-          <!-- <div class="cophoto" style="text-align:center">
-            <img [src]="user.profilePic" width="100" />
-          </div> -->
-          <!-- <br>
-          <label> Company Logo </label>
-          <input type="text" #edituserprofilepic="ngModel" [(ngModel)]="user.profilePic" name="profilePic" minlength="3" pattern="https?://.+">
-          <br> -->
-          <label> Ticker Name </label>
-          <input type="text" #edituserusername="ngModel" [(ngModel)]="user.username" name="username">
 
-          <button class="btn btn-primary" type="submit">Save</button>
+          <label> Name </label>
+          <input type="text" #editusername="ngModel" [(ngModel)]="user.name" name="name">
+          <br>
+          <label> Surname </label>
+          <input type="text" #editusersurname="ngModel" [(ngModel)]="user.surname" name="surname">
+          <br>
+          <label> Username </label>
+          <input type="text" #edituserusername="ngModel" [(ngModel)]="user.username" name="username">
+          <br>
+          <label> Email </label>
+          <input type="text" #edituseremail="ngModel" [(ngModel)]="user.email" name="email">
+          <br>
+          <label> Cash </label>
+          <input type="text" #editusercash="ngModel" [(ngModel)]="user.cash" name="cash">
+          <br>
+          <label> Funds </label>
+          <input type="text" #edituserfunds="ngModel" [(ngModel)]="user.cash" name="funds">
+          <br>
+          <button class="btn btn-primary dngr" type="submit">Save Changes</button>
 
         </form>
+        <div class="bck">
+            <a [routerLink]="['/user', user._id]">
+              <button class="btn btn-danger dngr"> Cancel </button>
+            </a>
+        </div>
+
       </div>
-      <div class="col-3"></div>
+      <div class="col-3">
+
+      </div>
     </div>
   </div>
-
-
-{{user | json}}
+</div>

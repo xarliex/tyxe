@@ -46,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const User = require('./models/User')
 const cocrud = require("./routes/cocrud")
+const ordercrud = require("./routes/ordercrud")
 
 app.use(session({
   secret: 'angular auth passport secret shh',
@@ -57,10 +58,15 @@ app.use(session({
 
 require('./passport')(app)
 
-console.log(User.modelName);
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  next()
+})
+
 app.use('/api/auth', auth);
 app.use('/api/user', generateCRUD(User));
 app.use('/api/companies', cocrud);
+app.use('/api/orders', ordercrud);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

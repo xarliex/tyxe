@@ -23,8 +23,8 @@ router.put('/edit/:id', function (req, res, next) {
       k => !['_id', '__v', 'created_at', 'updated_at'].includes(k)
     );
     const updates = _.pick(req.body, model_properties);
-
-    Model.findByIdAndUpdate(req.params.id, updates)
+  
+    Model.findByIdAndUpdate(req.params.id, updates, {new: true}) 
       .then(newObj => {
         debug(`UPDATED: ${newObj._id}`)
         res.json({ message: 'Model updated successfully' })
